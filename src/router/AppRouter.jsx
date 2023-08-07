@@ -7,7 +7,7 @@ import { JournalRouter } from "./JournalRouter";
 
 export const  getRoutes = [
     {
-        path: "/auth",
+        path: "/auth/*",
         element: <AuthRouter/>,
         errorElement: <ErrorPage/>,
         children: authRoutes

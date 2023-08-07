@@ -4,7 +4,6 @@ import { getRoutes } from './router/AppRouter'
 import { AppTheme } from './theme';
 import { CheckingAuth } from './ui';
 import { useCheckAuth } from './hooks/useCheckAuth';
-import { useSelector } from 'react-redux';
 
 const router = createBrowserRouter(getRoutes);
 

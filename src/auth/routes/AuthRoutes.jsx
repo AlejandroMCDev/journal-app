@@ -13,7 +13,7 @@ export const authRoutes = [
         element: <RegisterPage/>
     },
     {
-        path: '/auth/*',
+        path: '*',
         element: <Navigate to="/auth/login" />
     }
 

@@ -4,6 +4,7 @@ import { login, logout } from "../store/auth";
 import { useEffect } from "react";
 import { FirebaseAuth } from "../firebase/config";
 import { startLoadingNotes } from "../store/journal";
+import { Navigate } from "react-router-dom";
 
 export const useCheckAuth = () => {
 
@@ -12,7 +13,9 @@ export const useCheckAuth = () => {
 
     useEffect(() => {
         onAuthStateChanged( FirebaseAuth, async( user ) => {
-            if ( !user ) return dispatch( logout() );
+            if ( !user ) {
+              return dispatch( logout() );
+            }
 
             const { uid,email,displayName,photoUrl } = user;
             dispatch( login({ uid,email,displayName,photoUrl }) );
