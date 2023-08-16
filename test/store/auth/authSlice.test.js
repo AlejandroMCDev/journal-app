@@ -1,5 +1,6 @@
-import { AuthSlice, login, logout } from "../../../src/store/auth/authSlice"
+import { AuthSlice ,checkingCredentials, login, logout } from "../../../src/store/auth/authSlice"
 import { authenticatedState, demoUser, initialState } from "../../fixtures/authFixtures";
+
 
 describe('Pruebas en el authSlice', () => {
     test('debe de regresar el estado inicial y llamarse "auth"', () => {
@@ -44,6 +45,12 @@ describe('Pruebas en el authSlice', () => {
             errorMessage: 'Vuelva pronto'
         });
     })
+
+    test('debe de cambiar el estado a checking', () => {
+        const state = AuthSlice.reducer(authenticatedState, checkingCredentials());
+        expect(state.status).toBe('checking')
+    })
+    
     
     
 })

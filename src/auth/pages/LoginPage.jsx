@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {Link as RouterLink} from 'react-router-dom';
-import { Google } from '@mui/icons-material'
+import  Google  from '@mui/icons-material/Google'
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material'
 
 import { startGoogleSingIn, startLoginWithEmailPassword } from '../../store/auth/thunk';
@@ -35,14 +35,16 @@ export const LoginPage = () => {
 
   return (  
     <AuthLayout title='Login'>
-        <form onSubmit={onSubmit}>
+        <form
+          aria-label='submit-form'
+          onSubmit={onSubmit}>
               <Grid container>
                 <Grid item xs={12} sx={{mt: 2}}>
                   <TextField label="Correo" type='email' placeholder='correo@google.com' fullWidth name='email' value={email} onChange={onInputChange}/>
                 </Grid>
 
                 <Grid item xs={12} sx={{mt: 2}}>
-                  <TextField label="Contraseña" type='password' placeholder='Contraseña' fullWidth name='password' value={password} onChange={onInputChange}/>
+                  <TextField label="Contraseña" inputProps={{'data-testid':'password'}} type='password' placeholder='Contraseña' fullWidth name='password' value={password} onChange={onInputChange}/>
                 </Grid>
               </Grid>
 
@@ -60,7 +62,7 @@ export const LoginPage = () => {
                 </Grid>
 
                 <Grid item xs={ 12 } sm={ 6 }>
-                  <Button disabled={ isAuthenticating } variant='contained' fullWidth onClick={onGoogleSingIn}>
+                  <Button disabled={ isAuthenticating } aria-label="google-btn" variant='contained' fullWidth onClick={onGoogleSingIn}>
                     <Google/>
                     <Typography sx={{ ml: 1 }}>Google</Typography>
                   </Button>
